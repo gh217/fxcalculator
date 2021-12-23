@@ -21,6 +21,7 @@ public class Controller  {
     public void operator(ActionEvent e ){
         Button btn = (Button) e.getSource();
         comp+=btn.getText();
+        //comp+=((Button) e.getSource()).getText();
         textField.setText(comp);
     }
 
@@ -29,9 +30,13 @@ public class Controller  {
         textField.setText(comp);
     }
 
-    public void equal(ActionEvent e ) throws Exception {
-        Object o =Calculator.getResult(comp);
-        textField.setText(o.toString());
+    public void equal(ActionEvent e ) {
+        try {
+            Object o =Calculator.getResult(comp);
+            textField.setText(o.toString());
+        }catch (Exception ex ){
+            textField.setText(ex.getMessage());
+        }
     }
 
 }
